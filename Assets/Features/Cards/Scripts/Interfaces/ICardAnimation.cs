@@ -5,6 +5,6 @@ namespace Assets.Features.Cards.Scripts.Interfaces
 {
     public interface ICardAnimation
     {
-        UniTask FlipCardAsync(ICardView card, CardSide cardSide, int animID);
+        UniTask FlipCardAsync(ICardView card, CardSide cardSide);
     }
 }

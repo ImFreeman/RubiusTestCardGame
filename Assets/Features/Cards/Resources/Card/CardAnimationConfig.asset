@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368d5dfeccb469c4b8981b7df07813fa, type: 3}
   m_Name: CardAnimationConfig
   m_EditorClassIdentifier: 
-  animModels:
-  - ID: 0
-    Speed: 0.1
-    Ease: 1
-    Rotation: {x: 0, y: 90, z: 0}
+  speed: 0.1
+  ease: 1
+  rotation: {x: 0, y: 90, z: 0}

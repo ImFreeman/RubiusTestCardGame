@@ -11,8 +11,7 @@ namespace Assets.Features.Cards.Scripts.Realisation
         public string Name;
         public string Discription;
         public Sprite FaceSprite;
-        public Sprite BackSprite;
-        public int AnimID;
+        public Sprite BackSprite;        
     }
 
     [CreateAssetMenu(fileName = "CardConfig", menuName = "ScriptableObjects/CardConfig", order = 1)]

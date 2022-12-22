@@ -13,18 +13,16 @@ namespace Assets.Features.Cards.Scripts.Realisation
             _config = config;
         }
 
-        public async UniTask FlipCardAsync(ICardView card, CardSide cardSide, int animID)
+        public async UniTask FlipCardAsync(ICardView card, CardSide cardSide)
         {
             if (card.CurrentCardSide == cardSide)
             {
                 return;
-            }
+            }            
 
-            var animModel = _config.Get(animID).Value;
-
-            await FlipCard(card.BodyTransform, animModel.Rotation, animModel.Speed, animModel.Ease);
+            await FlipCard(card.BodyTransform, _config.Rotation, _config.Speed, _config.Ease);
             card.SetCardSide(cardSide);
-            await FlipCard(card.BodyTransform, Vector3.zero, animModel.Speed, animModel.Ease);
+            await FlipCard(card.BodyTransform, Vector3.zero, _config.Speed, _config.Ease);
         }
 
         private async UniTask FlipCard(Transform cardTransform, Vector3 rotation, float speed, Ease ease)
