@@ -30,6 +30,9 @@ namespace Assets.Features.Cards.Scripts.Realisation
             _frontSprite = protocol.FrontSprite;
             nameLabel.text = protocol.Name;
             descriptionLabel.text = protocol.Discription;
+            bodyTransform.SetParent(protocol.Container);
+            bodyTransform.localPosition = Vector3.zero;
+            bodyTransform.localScale = Vector3.one;
         }       
 
         public void SetMainPicture(Texture2D texture)
