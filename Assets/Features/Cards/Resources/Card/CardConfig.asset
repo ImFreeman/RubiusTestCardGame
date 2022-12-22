@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2898020ddc06343b4052ab3ac3b2ef, type: 3}
+  m_Name: CardConfig
+  m_EditorClassIdentifier: 
+  cardModels:
+  - ID: 0
+    Name: "\u041F\u0440\u0438\u043D\u0446 \u041A\u0435\u043B\u0435\u0441\u0435\u0442"
+    Discription: "\u0415\u0441\u043B\u0438 \u044D\u0442\u0430 \u043A\u0430\u0440\u0442\u0430
+      \u043F\u0440\u0438\u0448\u043B\u0430 \u043D\u0430 \u0432\u0442\u043E\u0440\u043E\u0439
+      \u0445\u043E\u0434, \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A
+      \u0441\u0434\u0430\u0435\u0442\u0441\u044F."
+    FaceSprite: {fileID: 21300000, guid: 59f80db6ad548804eaa6ad14710ad012, type: 3}
+    BackSprite: {fileID: 21300000, guid: 8741cdc9b17eff64eb9775d9754e56f8, type: 3}
+    AnimID: 0
