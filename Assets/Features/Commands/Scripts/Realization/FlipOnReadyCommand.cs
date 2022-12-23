@@ -2,6 +2,7 @@ using Assets.Features.Cards.Scripts.Interfaces;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Assets.Features.Cards.Scripts.Realisation;
+using System.Collections.Generic;
 
 namespace Assets.Features.Command
 {    
@@ -9,7 +10,7 @@ namespace Assets.Features.Command
     {
         public FlipOnReadyCommand(
             ICardAnimation cardAnimation,
-            ICardView[] cardViews) : base(cardAnimation, cardViews)
+            List<ICardView> cardViews) : base(cardAnimation, cardViews)
         {
         }        
 
@@ -26,7 +27,7 @@ namespace Assets.Features.Command
                 var requestResult = await requestCommand.Do();
                 if(requestResult.Status == CommandStatus.Failed)
                 {
-                    rez.Status = CommandStatus.Failed;
+                    rez.Status = CommandStatus.Failed;                    
                 }
 
                 card.SetMainPicture((Texture2D)requestResult.Body);

@@ -1,6 +1,7 @@
 using Assets.Features.Cards.Scripts.Interfaces;
 using Assets.Features.Cards.Scripts.Realisation;
 using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Features.Command
@@ -9,7 +10,7 @@ namespace Assets.Features.Command
     {
         public AllInTimeFlipCommand(
             ICardAnimation cardAnimation, 
-            ICardView[] cardViews) : base(cardAnimation, cardViews)
+            List<ICardView> cardViews) : base(cardAnimation, cardViews)
         {
         }
 

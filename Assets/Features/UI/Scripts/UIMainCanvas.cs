@@ -28,18 +28,31 @@ namespace Assets.Features.UI.Scripts
 
         private void Start()
         {
-            playButton.OnClickEvent += () => 
-            { 
-                PlayButtonClickEvent?.Invoke();
-            };
-            cancelButton.OnClickEvent += () => 
-            {
-                CancelButtonClickEvent?.Invoke(); 
-            };
-            dropdown.ChangeValueEvent += (sender, value) => 
-            {
-                DropDownValueChange?.Invoke(this, value);
-            };
+            playButton.OnClickEvent += PlayButtonClickHandler;
+            cancelButton.OnClickEvent += CancelButtonClickHandler;
+            dropdown.ChangeValueEvent += DropdownValueChangeHandler;
+        }
+
+        private void PlayButtonClickHandler()
+        {
+            PlayButtonClickEvent?.Invoke();
+        }
+
+        private void CancelButtonClickHandler()
+        {
+            CancelButtonClickEvent?.Invoke();
+        }
+
+        private void DropdownValueChangeHandler(object sender, int value)
+        {
+            DropDownValueChange?.Invoke(this, value);
+        }
+
+        private void OnDestroy()
+        {
+            playButton.OnClickEvent -= PlayButtonClickHandler;
+            cancelButton.OnClickEvent -= CancelButtonClickHandler;
+            dropdown.ChangeValueEvent -= DropdownValueChangeHandler;
         }
     }
 }

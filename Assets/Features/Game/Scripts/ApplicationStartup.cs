@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using Zenject;
 using UnityEngine;
+using System;
 
 namespace Assets.Features.Game.Scripts
 {
@@ -19,15 +20,16 @@ namespace Assets.Features.Game.Scripts
             NumberOfCards = numberOfCards;
         }
     }
-    public class ApplicationStartup
+    public class ApplicationStartup : IDisposable
     {
         private const string UIMainCanvasPrefabPath = "UI/UIMainCanvas";
         private IInstantiator _instantiator;
+        private UIController _uIController;
         public ApplicationStartup(IInstantiator instantiator, ApplicationStartupProtocol protocol)
         {
             _instantiator = instantiator;
             Start(protocol.NumberOfCards, protocol.CardModelID).Forget();
-        }
+        }        
 
         private async UniTaskVoid Start(int numberOfCards, int cardModelID)
         {
@@ -41,8 +43,14 @@ namespace Assets.Features.Game.Scripts
                 .Do();
 
             var cards = (List<ICardView>)createCardsResult.Body;
-            _instantiator.Instantiate<UIController>(new object[] { new UIControllerProtocol(mainCanvas, cards) }).Init();
+            _uIController = _instantiator.Instantiate<UIController>(new object[] { new UIControllerProtocol(mainCanvas, cards) });
+            _uIController.Init();
             Resources.UnloadUnusedAssets();
+        }
+
+        public void Dispose()
+        {
+            _uIController.Dispose();
         }
     }
 }

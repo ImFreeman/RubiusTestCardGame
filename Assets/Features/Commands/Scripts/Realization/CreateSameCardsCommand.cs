@@ -70,6 +70,7 @@ namespace Assets.Features.Command
                 }));
             }
             await UniTask.WhenAll(tasks);
+            tasks.Clear();
             rez.Body = views;
             return rez;
         }
