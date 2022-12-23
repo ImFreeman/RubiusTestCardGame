@@ -15,6 +15,17 @@ namespace Assets.Features.UI.Scripts
         [SerializeField] private UIButton playButton;
         [SerializeField] private UIButton cancelButton;
         [SerializeField] private Transform cardContainer;
+
+        public void SetPlayButtonActive(bool value)
+        {
+            playButton.SetActive(value);
+        }
+
+        public void SetCancelButtonActive(bool value)
+        {
+            cancelButton.SetActive(value);
+        }
+
         private void Start()
         {
             playButton.OnClickEvent += () => 

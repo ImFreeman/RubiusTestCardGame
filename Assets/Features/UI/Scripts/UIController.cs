@@ -36,19 +36,21 @@ namespace Assets.Features.UI.Scripts
             _mainCanvas.DropDownValueChange += DropDownValueChangeHandler;
             _mainCanvas.PlayButtonClickEvent += PlayButtonClickEventHandler;
             _mainCanvas.CancelButtonClickEvent += CancelButtonClickEventHandler;
+            _mainCanvas.SetCancelButtonActive(false);
+            _mainCanvas.SetPlayButtonActive(true);
         }
 
         private void CancelButtonClickEventHandler()
         {
-            if (_flipCommand != null)
-            {
-                _flipCommand.Cancel();
-            }
+            _flipCommand.Cancel();
+            _mainCanvas.SetPlayButtonActive(true);
+            _mainCanvas.SetCancelButtonActive(false);
         }
 
         private async void PlayButtonClickEventHandler()
         {
-            _mainCanvas.PlayButtonClickEvent -= PlayButtonClickEventHandler;
+            _mainCanvas.SetPlayButtonActive(false);
+            _mainCanvas.SetCancelButtonActive(true);
             switch (_currentIndex)
             {
                 case 0:
@@ -65,7 +67,8 @@ namespace Assets.Features.UI.Scripts
                     break;
             }            
             await _flipCommand.Do();
-            _mainCanvas.PlayButtonClickEvent += PlayButtonClickEventHandler;
+            _mainCanvas.SetPlayButtonActive(true);
+            _mainCanvas.SetCancelButtonActive(false);
         }
 
         private void DropDownValueChangeHandler(object sender, int e)

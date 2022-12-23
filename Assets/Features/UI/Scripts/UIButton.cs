@@ -10,6 +10,11 @@ namespace Assets.Features.UI.Scripts
 
         [SerializeField] private Button button;
 
+        public void SetActive(bool value)
+        {
+            button.interactable = value;
+        }
+
         private void Start()
         {
             button.onClick.AddListener(OnClickHandler);
