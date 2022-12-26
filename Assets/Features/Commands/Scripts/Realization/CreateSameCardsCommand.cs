@@ -58,13 +58,7 @@ namespace Assets.Features.Command
             {
                 tasks.Add(UniTask.Create(async () =>
                 {
-                    var view = _cardViewFactory.Create(
-                            new CardViewProtocol(
-                                model.Value.Name,
-                                model.Value.Discription,
-                                model.Value.FaceSprite,
-                                model.Value.BackSprite,
-                                _container));
+                    var view = await GetCardView(model.Value);
                     views.Add(view);
                     _cardAnimation.FlipCardAsync(view, CardSide.Back).Forget();
                 }));
@@ -73,6 +67,18 @@ namespace Assets.Features.Command
             tasks.Clear();
             rez.Body = views;
             return rez;
+        }
+
+        private async UniTask<ICardView> GetCardView(CardModel model)
+        {            
+            ICardView view =  _cardViewFactory.Create(
+                            new CardViewProtocol(
+                                model.Name,
+                                model.Discription,
+                                model.FaceSprite,
+                                model.BackSprite,
+                                _container));
+            return view;
         }
     }
 }
